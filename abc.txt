@@ -1,0 +1,73 @@
+The goal of the QA track is to foster research on
+systems that retrieve answers rather than
+documents in response to a question [11][12]. The
+focus is on systems that can function in
+unrestricted open domains [11].
+The web track features ad hoc search tasks on a
+document collection that is a snapshot of the
+World Wide Web. The main focus of this track is
+to form a Web test collection using pooled
+relevance judgments. We will describe our systems
+and experiences for both QA and Web tracks in
+this paper.
+2. QA track: Systems and Experiences
+In TREC-10, the QA track consisted of three
+separate tasks: the main task, the list task and the
+context task. We participated in only the main task.
+The main task is similar to the task in previous
+QA tracks (TREC-8, TREC-9). NIST provided 500
+questions that seek short, fact-based answers.
+Some questions may not have a known answer in
+the document collection. In that case, the response
+string “NIL” is judged correct. This differs from
+the previous QA tracks and makes the task
+somewhat more difficult. The answer-string
+should contain no more than 50 bytes; 250-byte
+runs were abandoned this year. Participants must
+return at least one and no more than five
+responses per question ranked by preferences.
+The document collection consists of the
+following six data sets: AP newswire, Wall Street
+Journal, San Jose Mercury News, Financial Times,
+Los Angeles Times, and Foreign Broadcast
+Information Service. The documents are SGML
+tagged, and each document in this collection has a 
+unique identifier in the field.
+Distinguished from an information retrieval, a
+QA system must retrieve answers rather than
+documents as responses to a question. As an
+ordinary course of step, we focused on what can be
+a possible answer, how our system can determine
+the answer type of a question, and how our system
+can detect instances of each answer type in a
+document. We classified possible answers and
+designed a method for determining the answer
+type of each question and detecting instances of it
+in a document. We have not constructed the index
+of document collection this time and instead used
+the ranked document list provided by NIST for
+each question.
+Our QA system, SiteQ, consists of three
+important steps; question processing, passage
+selection and answer processing, which will be
+explained in detail.
+2.1 Question Processing
+In general, a question answering system
+analyzes an input question at first step. It is
+important to understand what a user wants to
+find; whether it is person’s name, location,
+organization, or any other types. To do so, we first
+classified the types of possible answers [1][2][3][6]
+and used Lexico-Semantic Patterns (LSP) to
+determine the answer type of a question.
+2.1.1 Answer Type
+We classified the type of answers to fact-seeking
+questions [12]. Referring to the types used in
+FALCON [3], we analyzed the questions used in
+the previous QA tracks and their answers judged
+correct and constructed 2-level hierarchy of
+answer types. Hierarchical structure of answer
+types is useful since only YEAR is available for
+‘what year’ question, but YEAR, MONTH, DAY, or
+TIME is available for ‘when’ question. Our answer
+type has 18 types at top level as shown in the box. 
